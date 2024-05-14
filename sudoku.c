@@ -44,7 +44,17 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-
+   int i,j;
+   for(i=0;i<9;i++){
+      int* arr=(int*) calloc(10,sizeof(int));
+      for(j=0;j<9;j++){
+         if(n->sudo[i][j]==0) continue;
+         if(arr[n->sudo[i][j]]) return 0;
+         arr[n->sudo[i][j]]=1;
+         
+      }
+      free(arr);
+   }
     return 1;
 }
 
