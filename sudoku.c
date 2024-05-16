@@ -51,7 +51,6 @@ int is_valid(Node* n){
          if(n->sudo[i][j]==0) continue;
          if(arr[n->sudo[i][j]]) return 0;
          arr[n->sudo[i][j]]=1;
-         
       }
       free(arr);
    }
@@ -69,16 +68,19 @@ List* get_adj_nodes(Node* n){
              adj->sudo[i][j]=1;
              pushBack(list,adj);
           }
-          
        }
-       
     }
-   
     return list;
 }
 
 
 int is_final(Node* n){
+    int i,j;
+    for(i=0;i<9;i++){
+       for(j=0;j<9;j++){
+          if(n->sudo[i][j]==0) return 0;
+       }
+    }
     return 0;
 }
 
