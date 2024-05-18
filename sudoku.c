@@ -70,7 +70,6 @@ int is_valid(Node* n){
          else
             return 0;
       }
-      free(arr);
    }
     return 1;
 }
