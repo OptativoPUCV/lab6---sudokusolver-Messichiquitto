@@ -71,17 +71,16 @@ int is_valid(Node* n){
       }
    }
 
-   
    for(i = 0; i < 3; i++){
-      int arr[10] = {0};
+      int subM[10] = {0};
       for(j = 0; j < 9; j++){
          int h = 3*(i/3) + (j/3);
          int v = 3*(i%3) + (j%3);
 
          int matriz = n->sudo[v][h];
          if(matriz != 0){
-            if(arr[matriz] == 0)
-               arr[matriz] = 1;
+            if(subM[matriz] == 0)
+               subM[matriz] = 1;
             else
                return 0;
          }
@@ -123,7 +122,16 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
-  return NULL;
+   Stack* S = createStack();
+   if(S==NULL)
+      return NULL;
+   *cont = 1;
+   push(S, initial);
+   while(!is_empty(S)){
+      Node* n = top(S);
+      pop(S);
+      *cont = *cont -1;
+   }
 }
 
 
