@@ -131,6 +131,20 @@ Node* DFS(Node* initial, int* cont){
       Node* n = top(S);
       pop(S);
       *cont = *cont -1;
+      (*cont)--;
+      if(is_final(n)){
+         return n;
+      }
+      List* list = get_adj_nodes(n);
+      Node* aux = first(list);
+      while(aux){
+         push(S, aux);
+         aux = next(list);
+         (*cont)++;
+         *cont = *cont +1;
+      }
+      (*cont)++;
+      free(n);
    }
 }
 
