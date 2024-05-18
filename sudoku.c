@@ -130,8 +130,7 @@ Node* DFS(Node* initial, int* cont){
    while(!is_empty(S)){
       Node* n = top(S);
       pop(S);
-      *cont = *cont -1;
-      (*cont)--;
+      *cont = *cont -2;
       if(is_final(n)){
          return n;
       }
@@ -140,8 +139,7 @@ Node* DFS(Node* initial, int* cont){
       while(aux){
          push(S, aux);
          aux = next(list);
-         (*cont)++;
-         *cont = *cont +1;
+         *cont = *cont +2;
       }
       (*cont)++;
       free(n);
