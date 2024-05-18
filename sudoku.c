@@ -48,9 +48,27 @@ int is_valid(Node* n){
    for(i=0;i<9;i++){
       int* arr=(int*) calloc(10,sizeof(int));
       for(j=0;j<9;j++){
-         if(n->sudo[i][j]==0) continue;
-         if(arr[n->sudo[i][j]]) return 0;
+         if(n->sudo[i][j]==0) 
+            continue;
+         if(arr[n->sudo[i][j]]) 
+            return 0;
          arr[n->sudo[i][j]]=1;
+      }
+      free(arr);
+   }
+   for(i = 0; i < 3; i++){
+      int* arr=(int*) calloc(10,sizeof(int));
+      for(j = 0; j < 9; j++){
+         int h = 3*(i/3) + (j/3);
+         int v = 3*(i%3) + (j%3);
+
+         int matriz = n->sudo[v][h];
+         if(matriz != 0){
+            if(arr[matriz] == 0)
+               arr[matriz] = 1;
+         }
+         else
+            return 0;
       }
       free(arr);
    }
